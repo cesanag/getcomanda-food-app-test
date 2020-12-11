@@ -101,7 +101,7 @@ const Description = styled.div`
 `
 
 
-export default function MenuItem(props) {
+export default function Item(props) {
     return (
             <Container>
                 <DetailsContainer>
