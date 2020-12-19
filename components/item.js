@@ -101,12 +101,12 @@ const Description = styled.div`
 `
 
 
-export default function Item(props) {
+export default function Item({title, img, description }) {
     return (
             <Container>
                 <DetailsContainer>
                     <ItemTitle>
-                        {props.text}
+                        {title}
                     </ItemTitle>
                     <ButtonsContentainer>
                         <Button>
@@ -115,76 +115,20 @@ export default function Item(props) {
                     </ButtonsContentainer>
                 </DetailsContainer>
                     
-                    <Img src={props.img} />
+                    <Img src={img[0].name} />
                     <DescriptionContainer>
                          <DescriptionContainerCloseButton>
                              X
                          </DescriptionContainerCloseButton>
                         <Description>
-                            {props.children}
+                         
                             <h1>
-                                BLACK MAMBA
+                                {title}
                             </h1>
                             <p>
-                                Vodka
+                                {description}
                             </p>
-                            <p>
-                                Liquore alla pesca
-                            </p>
-                            <p>
-                                Cranberry
-                            </p>
-                            <p>
-                                Tangerine Motherbitch
-                            </p>
-                            <p>
-                                Vodka
-                            </p>
-                            <p>
-                                Vodka
-                            </p>
-                            <p>
-                                Liquore alla pesca
-                            </p>
-                            <p>
-                                Cranberry
-                            </p>
-                            <p>
-                                Tangerine Motherbitch
-                            </p>
-                            <p>
-                                Vodka
-                            </p>
-                            <p>
-                                Vodka
-                            </p>
-                            <p>
-                                Liquore alla pesca
-                            </p>
-                            <p>
-                                Cranberry
-                            </p>
-                            <p>
-                                Tangerine Motherbitch
-                            </p>
-                            <p>
-                                Vodka
-                            </p>
-                            <p>
-                                Vodka
-                            </p>
-                            <p>
-                                Liquore alla pesca
-                            </p>
-                            <p>
-                                Cranberry
-                            </p>
-                            <p>
-                                Tangerine Motherbitch
-                            </p>
-                            <p>
-                                Vodka
-                            </p>                               
+                                                   
                         </Description>
                     </DescriptionContainer>
 

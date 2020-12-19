@@ -1,7 +1,7 @@
 const Copy = {
     
     //Main
-    company: "RealEstate",
+    company: "DrinksApp",
     currency: "€",
     measure: "m²",
     country: "Italia",

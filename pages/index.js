@@ -1,75 +1,110 @@
 //Import React
 import styled from "@emotion/styled";
-import { Colors, Fonts } from "assets/variables";
-import React, { useState } from 'react';
-import img0 from 'assets/image/img0.jpg'
-import img1 from 'assets/image/img1.jpg'
-import img2 from 'assets/image/img2.jpg'
+import { Colors } from "assets/variables";
+import React, { useEffect, useState } from 'react';
 
 
-//Import ReusableComponents
+//Import Components
 import Header from 'components/header';
 import Item from 'components/item';
-import MenuContainer from 'components/menuContainer';
 import Button from 'components/button'
+
+//Import Services
+import { getAllItems } from 'services/items';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
 `
 const Content = styled.div`
-  position: relative;
   display:flex;
-  flex-direction: row;
   justify-self: center;
   background-color: ${Colors.darkGrey}
+`
+const MenuContainer = styled.div`
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background-color: ${Colors.darkGrey};
+    box-shadow: -8px 12px 26px -10px black;
+    flex: 0.25;
+`
+const ItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `
 
 
 export default function AppFrontend() {
 
+  const [items, setItems] = useState ([]);
+  useEffect(() => {
+    getAllItems().then(
+      items => setItems([...items])
+      )
+  }, 
+   []
+  )
   return (
     <Container>
-        <Header 
-        />
-
+        <Header />
       <Content>
        
         <MenuContainer>
               <Button
-                buttonText="Colada"
-              />
+                color={Colors.white}
+                bgColor={Colors.darkGrey}
+                borderColor={Colors.darkGrey}
+              >
+              Colada
+              </Button>
               <Button
-                buttonText="Exotic"
-              />
+                color={Colors.white}
+                bgColor={Colors.darkGrey}
+                borderColor={Colors.darkGrey}
+              >
+              Exotic
+              </Button>
               <Button
-                buttonText="On the Rock"
-              />
+                color={Colors.white}
+                bgColor={Colors.darkGrey}
+                borderColor={Colors.darkGrey}
+              >
+              On the rocks
+              </Button>
               <Button
-                buttonText="Sour"
-              />
+                color={Colors.white}
+                bgColor={Colors.darkGrey}
+                borderColor={Colors.darkGrey}
+              >
+              Sour
+              </Button>
+              
               <Button
-                buttonText="Sparkling"
-              />
-                <Button
-                buttonText="Analcolici"
-              />
+                color={Colors.white}
+                bgColor={Colors.darkGrey}
+                borderColor={Colors.darkGrey}
+              >
+              Sparkling
+              </Button>
+              <Button
+                color={Colors.white}
+                bgColor={Colors.darkGrey}
+                borderColor={Colors.darkGrey}
+              >
+              Analcolici
+              </Button>
+             
         </MenuContainer>
       
-        <div className="panel-container">
-          <Item
-            img={img0}
-            text="Black Mamba"
-            />
-          <Item
-            img={img1}
-            text="Lick the Rainbow"
-            />
-          <Item
-            img={img2}
-            text="Red on the Sexy Beach"
-            />
-        </div>
+        <ItemContainer>
+            {
+            items.map((element, index) => (
+              <Item {...element}/>
+            ))
+          }
+        </ItemContainer>
       </Content>
     </Container>
   );
