@@ -115,7 +115,7 @@ export default function Item({title, img, description }) {
                     </ButtonsContentainer>
                 </DetailsContainer>
                     
-                    <Img src={img[0].name} />
+                    <Img src={img?.formats?.small?.url} />
                     <DescriptionContainer>
                          <DescriptionContainerCloseButton>
                              X
