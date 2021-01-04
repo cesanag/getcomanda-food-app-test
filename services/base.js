@@ -1,7 +1,7 @@
 import axios from "axios"
 import Cookie from "js-cookie";
 
-const baseURL = "https://getcomanda.herokuapp.com";
+const baseURL = "https://g37c0m4nd4.herokuapp.com";
 
 function authorization(j = "") {
   const jwt = j || Cookie.get("jwtToken");

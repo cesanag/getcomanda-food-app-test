@@ -26,12 +26,28 @@ function RoleComponent({ children, role }) {
   return hasRole ? children : <></>;
 }
 
+function RolesPage({children, roles}) {
+  const ctx = useContext(AuthContext);
+  const { data, isLogged } = ctx;
+  const { role: dbRole } = data;
+  const hasRole = roles.includes(dbRole);
+  return isLogged === null
+    ? <Spin /> 
+    : hasRole 
+    ? children 
+    : <Error statusCode={404}/>;
+}
+
+export function OwnerPage({ children }) {
+  return <RolesPage roles={["owner", "staff"]}>{children}</RolesPage>
+}
+
 export function AdminComponent({ children }) {
   return <RoleComponent role="admin">{children}</RoleComponent>;
 }
 
-export function AgenziaComponent({ children }) {
-  return <RoleComponent role="agenzia">{children}</RoleComponent>;
+export function OwnerComponent({ children }) {
+  return <RoleComponent role="owner">{children}</RoleComponent>;
 }
 
 export function UtenteComponent({ children }) {

@@ -1,111 +1,54 @@
-//Import React
+import React from 'react';
+import Link from "next/link";
 import styled from "@emotion/styled";
-import { Colors } from "assets/variables";
-import React, { useEffect, useState } from 'react';
+import { Button} from "antd";
 
-
-//Import Components
-import Header from 'components/header';
-import Item from 'components/item';
-import Button from 'components/button'
-
-//Import Services
-import { getAllItems } from 'services/items';
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-const Content = styled.div`
-  display:flex;
-  justify-self: center;
-  background-color: ${Colors.darkGrey}
-`
-const MenuContainer = styled.div`
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    background-color: ${Colors.darkGrey};
-    box-shadow: -8px 12px 26px -10px black;
-    flex: 0.25;
-`
-const ItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+const Title = styled.div`
+  font-size: 30px;
+  font-weight: 700;
 `
 
+import { StandardLayout } from "layout";
+import { Typography, Space, Layout, Divider  } from 'antd';
+const { Text } = Typography;
 
-export default function AppFrontend() {
+export default function Index() {
 
-  const [items, setItems] = useState ([]);
-  useEffect(() => {
-    getAllItems().then(
-      items => setItems([...items])
-      )
-  }, 
-   []
-  )
   return (
-    <Container>
-        <Header />
-      <Content>
-       
-        <MenuContainer>
-              <Button
-                color={Colors.white}
-                bgColor={Colors.darkGrey}
-                borderColor={Colors.darkGrey}
-              >
-              Colada
+    <StandardLayout>
+      <Layout style={{ minHeight: "100vh" }}>
+        <Space align="center" direction="vertical">
+        <Divider />
+          <Title>Drink App</Title>
+          <Text type="default">Landing Page</Text>
+          <Divider />
+          <Text type="default">Nuovo utente</Text>
+
+          <Link href="/signin">
+            <a>
+              <Button type="primary">
+                Inizia ora
               </Button>
-              <Button
-                color={Colors.white}
-                bgColor={Colors.darkGrey}
-                borderColor={Colors.darkGrey}
-              >
-              Exotic
+            </a>
+          </Link>
+          <Divider />
+          <Text type="default">Test Owner</Text>
+          <Link href="/lounge-life">
+            <a>
+              <Button ghost type="primary">
+                Lounge Life
               </Button>
-              <Button
-                color={Colors.white}
-                bgColor={Colors.darkGrey}
-                borderColor={Colors.darkGrey}
-              >
-              On the rocks
+            </a>
+          </Link>
+          <Link href="/bar-bone">
+            <a>
+              <Button ghost type="primary">
+                Bar Bone
               </Button>
-              <Button
-                color={Colors.white}
-                bgColor={Colors.darkGrey}
-                borderColor={Colors.darkGrey}
-              >
-              Sour
-              </Button>
-              
-              <Button
-                color={Colors.white}
-                bgColor={Colors.darkGrey}
-                borderColor={Colors.darkGrey}
-              >
-              Sparkling
-              </Button>
-              <Button
-                color={Colors.white}
-                bgColor={Colors.darkGrey}
-                borderColor={Colors.darkGrey}
-              >
-              Analcolici
-              </Button>
-             
-        </MenuContainer>
-      
-        <ItemContainer>
-            {
-            items.map((element, index) => (
-              <Item {...element}/>
-            ))
-          }
-        </ItemContainer>
-      </Content>
-    </Container>
+            </a>
+          </Link>
+        </Space>
+      </Layout>
+    </StandardLayout>
   );
 }
