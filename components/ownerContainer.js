@@ -33,8 +33,8 @@ export default function OwnerContainer({title, img, presentation}) {
         }}
         direction="vertical" align="center">
           <Avatar
-            size={{ xs: 64, xl: 80, xxl: 100 }}
-            src={img?.formats?.thumbnail?.url}
+            size={80}
+            src={img[0]?.formats?.thumbnail?.url}
           />
           <Space direction="horizontal" align="baseline">
             <Title level={4}>{title}</Title>
