@@ -1,0 +1,1 @@
+A quick Next.js test for Getcomanda food app.
